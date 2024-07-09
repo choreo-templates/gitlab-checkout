@@ -1,0 +1,34 @@
+name: 'GitLab Checkout'
+description: 'Checkout a repository from GitLab'
+author: WSO2
+branding:
+  icon: 'arrow-up-circle'
+  color: 'orange'
+runs:
+  using: node16
+  main: dist/index.js
+inputs:
+  token:
+    required: true
+    description: 'The token of the user repository'
+  username:
+    required: true
+    description: 'The username of the user repository'
+  userOrgName:
+    required: true
+    description: 'The organization name of the user repository'
+  userRepoName:
+    required: true
+    description: 'The name of the user repository'
+  configRepoName:
+    required: true
+    description: 'The name of the config repository'
+  ref:
+    required: true
+    description: 'The commit sha or branch of the user repository which going to be checked out'
+  commitUser:
+    required: true
+    description: 'The username of the user who is going to commit'
+  commitEmail:
+    required: true
+    description: 'The email of the user who is going to commit'
