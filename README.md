@@ -6,7 +6,7 @@ This is a simple script to checkout a branch from a GitLab server repository.
 
 ```
   name: "GitLab Checkout",
-  uses: "choreo-templates/gitlab-checkout@v1.0.0",
+  uses: "choreo-templates/gitlab-checkout@v0.1.0",
   with:
     token: "${{ env.APP_GITLAB_SERVER_TOKEN }}",
     serverUrl: "${{env.APP_GITLAB_SERVER_URL}}",
