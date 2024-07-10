@@ -14,7 +14,7 @@ inputs:
   disableSSL:
     required: true
     description: 'Disable SSL verification'
-    default: false
+    default: true
   username:
     required: true
     description: 'The username of the user repository'
