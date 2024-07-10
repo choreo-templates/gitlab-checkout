@@ -2869,7 +2869,7 @@ try  {
         console.log(stdout);
         console.log(stderr);
         console.log("Completed removing files in current directory");
-        exec(disableSSL === true ? `git config --global http.sslVerify false` : `git config --global http.sslVerify true`, (err, stdout, stderr) => {
+        exec(disableSSL === 'true' ? `git config --global http.sslVerify false` : `git config --global http.sslVerify true`, (err, stdout, stderr) => {
             if (err) {
                 console.log(err);
                 core.setOutput("choreo-status", "failed");
