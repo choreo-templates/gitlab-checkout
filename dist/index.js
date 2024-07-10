@@ -2856,7 +2856,6 @@ try  {
     const commitEmail = core.getInput('commitEmail');
     const configRepoName = core.getInput('configRepoName');
     const serverUrl = core.getInput('serverUrl');
-    const branch = core.getInput('branch');
     const ref = core.getInput('ref');
     const disableSSL = core.getInput('disableSSL');
 
@@ -2945,6 +2944,7 @@ try  {
                             console.log(stdout);
                             console.log(stderr);
                             console.log("Completed git fetch");
+                            console.log("ref" + ref);
                             exec(`git checkout -b ${ref} ${ref}`, (err, stdout, stderr) => {
                                 if (err) {
                                     console.log(err);
