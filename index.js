@@ -93,7 +93,7 @@ try  {
                         console.log(stdout);
                         console.log(stderr);
                         console.log("Completed git remote add origin");
-                        exec(`git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +refs/heads/${branch}*:refs/remotes/origin/${branch}* +refs/tags/${branch}*:refs/tags/${branch}*`, (err, stdout, stderr) => {
+                        exec(`git fetch --all`, (err, stdout, stderr) => {
                             if (err) {
                                 console.log(err);
                                 core.setOutput("choreo-status", "failed");
