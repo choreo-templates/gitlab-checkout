@@ -114,7 +114,7 @@ try  {
                                 console.log("branches" + stdout);
                                 console.log(stderr);
                                 console.log("Completed git branch --list --remote");
-                                exec(`git checkout --progress --force -B ${branch} refs/remotes/origin/${branch}`, (err, stdout, stderr) => {
+                                exec(`git checkout --progress --force -B ${branch} ${branch}`, (err, stdout, stderr) => {
                                     if (err) {
                                         console.log(err);
                                         core.setOutput("choreo-status", "failed");
