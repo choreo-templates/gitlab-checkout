@@ -11,6 +11,10 @@ inputs:
   token:
     required: true
     description: 'The token of the user repository'
+  disableSSL:
+    required: true
+    description: 'Disable SSL verification'
+    default: false
   username:
     required: true
     description: 'The username of the user repository'

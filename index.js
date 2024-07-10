@@ -14,6 +14,7 @@ try  {
     const commitEmail = core.getInput('commitEmail');
     const configRepoName = core.getInput('configRepoName');
     const branch = core.getInput('branch');
+    const disableSSL = core.getInput('disableSSL');
 
     console.log("Started removing files in current directory");
     exec(`rm -rf /home/runner/workspace/${configRepoName}/${configRepoName}/*`, (err, stdout, stderr) => {
@@ -26,6 +27,17 @@ try  {
         console.log(stdout);
         console.log(stderr);
         console.log("Completed removing files in current directory");
+        exec(disableSSL === true ? `git config --global http.sslVerify false` : `git config --global http.sslVerify true`, (err, stdout, stderr) => {
+            if (err) {
+                console.log(err);
+                core.setOutput("choreo-status", "failed");
+                core.setFailed(err.message);
+                return;
+            }
+            console.log(stdout);
+            console.log(stderr);
+            console.log("Completed disabling SSL verification");
+        
         console.log("Started checkout to GitLab repo");
         exec(`git config --global --add safe.directory /home/runner/workspace/${configRepoName}/${configRepoName}`, (err, stdout, stderr) => {  
             if (err) {
@@ -120,7 +132,7 @@ try  {
             });
         });
     });
-    
+});
 } catch (e) {
     core.setOutput("choreo-status", "failed");
     core.setFailed(e.message);
