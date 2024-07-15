@@ -1,4 +1,4 @@
-# bitbucket-checkout
+# gitlab-checkout
 
 This is a simple script to checkout a branch from a GitLab server repository.
 
