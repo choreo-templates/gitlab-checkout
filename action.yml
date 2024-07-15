@@ -15,6 +15,10 @@ inputs:
     required: true
     description: 'Disable SSL verification'
     default: true
+  serverUrl:
+    required: false
+    description: 'Gitlab server url'
+    default: ""
   username:
     required: true
     description: 'The username of the user repository'
