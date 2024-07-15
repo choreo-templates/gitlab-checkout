@@ -69,6 +69,7 @@ try  {
                     console.log(stdout);
                     console.log(stderr);
                     console.log("Completed git config user.name and user.email");
+                    console.log(`url: ${serverUrl}/${userOrgName}/${userRepoName}.git`);
                     if(serverUrl!=""){
                         exec(`git config http.extraHeader "Authorization: Bearer ${token}"`,(err,stdout,stderr)=>{
                             if (err) {
