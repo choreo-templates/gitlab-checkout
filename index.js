@@ -50,7 +50,7 @@ try  {
             console.log(stdout);
             console.log(stderr);
             console.log("Completed adding safe directory");
-            exec(`git init /home/runner/workspace/${configRepoName}/${configRepoName}`, (err, stdout, stderr) => {
+            exec(`git init`, (err, stdout, stderr) => {
                 if (err) {
                     console.log(err);
                     core.setOutput("choreo-status", "failed");
