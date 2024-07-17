@@ -2856,6 +2856,7 @@ try  {
     const commitEmail = core.getInput('commitEmail');
     const configRepoName = core.getInput('configRepoName');
     const serverUrl = core.getInput('serverUrl');
+    const urlWithoutProtocol = serverUrl.replace(/^https:\/\//, '');
     const ref = core.getInput('ref');
     const disableSSL = core.getInput('disableSSL');
 
@@ -2912,20 +2913,8 @@ try  {
                     console.log(stderr);
                     console.log("Completed git config user.name and user.email");
                     console.log(`url: ${serverUrl}/${userOrgName}/${userRepoName}.git`);
-                    if(serverUrl!=""){
-                        exec(`git config http.extraHeader "Authorization: Bearer ${token}"`,(err,stdout,stderr)=>{
-                            if (err) {
-                                console.log(err);
-                                core.setOutput("choreo-status", "failed");
-                                core.setFailed(err.message);
-                                return;
-                            }
-                            console.log(stdout);
-                            console.log(stderr);
-                            console.log("Completed git config http.extraHeader");
-                        });
-                    }                  
-                    exec(`git remote add origin ${serverUrl}/${userOrgName}/${userRepoName}.git`, (err, stdout, stderr) => {
+                  
+                    exec(`git remote add origin https://oauth2:${token}@${urlWithoutProtocol}/${userOrgName}/${userRepoName}.git`, (err, stdout, stderr) => {
                         if (err) {
                             console.log(err);
                             core.setOutput("choreo-status", "failed");
