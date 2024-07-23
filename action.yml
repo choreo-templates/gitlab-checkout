@@ -11,6 +11,10 @@ inputs:
   token:
     required: true
     description: 'The token of the user repository'
+  serverUrl:
+    required: false
+    description: 'Gitlab server url'
+    default: ""
   username:
     required: true
     description: 'The username of the user repository'
