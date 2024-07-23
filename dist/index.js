@@ -2858,19 +2858,9 @@ try  {
     const serverUrl = core.getInput('serverUrl');
     const urlWithoutProtocol = serverUrl.replace(/^https:\/\//, '');
     const ref = core.getInput('ref');
-    const disableSSL = core.getInput('disableSSL');
 
     console.log("Started removing files in current directory");
-    exec(disableSSL === 'true' ? `git config --global http.sslVerify false` : `git config --global http.sslVerify true`, (err, stdout, stderr) => {
-        if (err) {
-            console.log(err);
-            core.setOutput("choreo-status", "failed");
-            core.setFailed(err.message);
-            return;
-        }
-        console.log(stdout);
-        console.log(stderr);
-        console.log("Completed disabling SSL verification");
+
     exec(`rm -rf /home/runner/workspace/${configRepoName}/${configRepoName}/*`, (err, stdout, stderr) => {
         if (err) {
             console.log(err);
@@ -2892,7 +2882,7 @@ try  {
             console.log(stdout);
             console.log(stderr);
             console.log("Completed adding safe directory");
-            exec(`git init /home/runner/workspace/${configRepoName}/${configRepoName}`, (err, stdout, stderr) => {
+            exec(`git init`, (err, stdout, stderr) => {
                 if (err) {
                     console.log(err);
                     core.setOutput("choreo-status", "failed");
@@ -2963,7 +2953,7 @@ try  {
             });
         });
     });
-});
+
 } catch (e) {
     core.setOutput("choreo-status", "failed");
     core.setFailed(e.message);
@@ -2973,6 +2963,7 @@ try  {
 }
 
 run();
+
 })();
 
 module.exports = __webpack_exports__;

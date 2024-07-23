@@ -11,10 +11,6 @@ inputs:
   token:
     required: true
     description: 'The token of the user repository'
-  disableSSL:
-    required: true
-    description: 'Disable SSL verification'
-    default: true
   serverUrl:
     required: false
     description: 'Gitlab server url'
