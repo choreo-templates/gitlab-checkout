@@ -82,7 +82,7 @@ try  {
                             console.log(stdout);
                             console.log(stderr);
                         });
-                        exec(`git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules origin`, (err, stdout, stderr) => {
+                        exec(`git -c protocol.version=2 fetch --tags --prune --progress --no-recurse-submodules origin`, (err, stdout, stderr) => {
                             if (err) {
                                 console.log(err);
                                 core.setOutput("choreo-status", "failed");
