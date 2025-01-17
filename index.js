@@ -14,7 +14,7 @@ try  {
     const commitEmail = core.getInput('commitEmail');
     const configRepoName = core.getInput('configRepoName');
     const serverUrl = core.getInput('serverUrl');
-    const urlWithoutProtocol = serverUrl.replace(/^https:\/\//, '');
+    const urlWithoutProtocol = serverUrl.replace(/^https?:\/\//, '');
     const ref = core.getInput('ref');
 
     console.log("Started removing files in current directory");
